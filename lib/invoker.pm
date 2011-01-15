@@ -8,20 +8,40 @@ use B::Hooks::EndOfScope;
 
 our $VERSION = "0.29_002";
 
+use B::Hooks::Parser;
 require XSLoader;
 XSLoader::load(__PACKAGE__, $VERSION);
 
 sub import {
     my ($class) = @_;
-    my $caller = caller;
+
+    my $parser = B::Hooks::Parser::setup();
+
+    my $linestr = B::Hooks::Parser::get_linestr();
+    my $offset  = B::Hooks::Parser::get_linestr_offset();
+    B::Hooks::Parser::inject('use B::OPCheck const => check => \&invoker::_check;');
 
     my $hook = $class->setup;
 
     on_scope_end {
         $class->teardown($hook);
+        B::Hooks::Parser::teardown($parser);
     };
 
     return;
+}
+
+sub _check {
+    my $op = shift;
+    return unless ref($op->gv) eq 'B::PV';
+
+    my $linestr = B::Hooks::Parser::get_linestr;
+    my $offset  = B::Hooks::Parser::get_linestr_offset;
+
+    if (substr($linestr, $offset-2, 3) eq '$->') {
+        substr($linestr, $offset-2, 3, '$-->');
+        B::Hooks::Parser::set_linestr($linestr);
+    }
 }
 
 1;
@@ -68,12 +88,6 @@ The following syntax works:
 
 =item $->$method_name
 
-=back
-
-The following syntax does not work:
-
-=over
-
 =item $->$method_name( .. args ...)
 
 =back
@@ -84,18 +98,14 @@ WARNINGS WARNINGS WARNINGS
 
 This is alpha code.  Do not use in production.
 
-Internally, the module installs a check on the C<< > >> (gt) op.  if
-the left operand is C< $- > (some format-related perlvar you probably
-shouldn't be using), it then replaces the optree with an appropriate
-entersub with method_named.
+Internally, the module installs a parser hook to replace C<< $-> >>
+(C<$-> and the gt operator) with $--> (an invocation on the C< $- >
+perlvar.  It also injects an entersub hook to replace C< $- > with
+C<$self >.
 
 =head1 BUGS
 
 =over
-
-=item 1+$->foo will not parse right due to precedences
-
-=item $->foo + $->bar will not parse
 
 =back
 

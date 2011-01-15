@@ -17,13 +17,14 @@ sub foo {
     push @foo, \@_;
 }
 {
-    my $sub = eval q{ sub {
+    # XXX: using string eval blows up b::hooks::parser here
+    my $sub = eval { sub {
                      use invoker;
                      sub {
                          my $self = shift;
                          $->foo("x", @_);
                      }
-                 } };
+                 }} ;
     ok($sub);
     diag $@ if $@;
 
@@ -35,7 +36,6 @@ sub foo {
 
     is_deeply(\@foo, [[$self, 'x', 1,2],
                       ['submain', $subself, 'x', 1, 2]]);
-
 }
 
 {

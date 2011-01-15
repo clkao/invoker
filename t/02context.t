@@ -11,7 +11,7 @@ sub foo {
     push @foo, [$c, @_];
 }
 {
-    my $sub = eval q{ sub {
+    my $sub = eval { sub {
                      use invoker;
                      sub {
                          my $self = shift;
