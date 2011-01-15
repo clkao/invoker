@@ -42,8 +42,11 @@ CAVEATS
     using), it then replaces the optree with an appropriate entersub with
     method_named.
 
+BUGS
+    1+$->foo will not parse right due to precedences
+    $->foo + $->bar will not parse
+
 TODO
-    make sure context are correct
     custom invoker name with "use invoker '$this'"
 
 AUTHOR

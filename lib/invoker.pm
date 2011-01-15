@@ -89,11 +89,19 @@ the left operand is C< $- > (some format-related perlvar you probably
 shouldn't be using), it then replaces the optree with an appropriate
 entersub with method_named.
 
-=head1 TODO
+=head1 BUGS
 
 =over
 
-=item make sure context are correct
+=item 1+$->foo will not parse right due to precedences
+
+=item $->foo + $->bar will not parse
+
+=back
+
+=head1 TODO
+
+=over
 
 =item custom invoker name with "use invoker '$this'"
 
