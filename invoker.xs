@@ -75,6 +75,7 @@ invoker_ck_gt(pTHX_ OP *o, void *ud) {
                     }
 
                     // warn("self next = %p %s", self->op_next, PL_op_name[self->op_next->op_type]);
+                    right->op_flags &= (~OPf_WANT | ( o->op_flags & OPf_WANT));
 
                     return right;
                 }
