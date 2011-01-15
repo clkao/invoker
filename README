@@ -27,9 +27,6 @@ DESCRIPTION
     $->foo( .. args ...)
     $->foo
     $->$method_name
-
-    The following syntax does not work:
-
     $->$method_name( .. args ...)
 
 CAVEATS
@@ -37,15 +34,11 @@ CAVEATS
 
     This is alpha code. Do not use in production.
 
-    Internally, the module installs a check on the ">" (gt) op. if the left
-    operand is $- (some format-related perlvar you probably shouldn't be
-    using), it then replaces the optree with an appropriate entersub with
-    method_named.
+    Internally, the module installs a parser hook to replace "$->" ($- and
+    the gt operator) with $--> (an invocation on the $- perlvar. It also
+    injects an entersub hook to replace $- with $self .
 
 BUGS
-    1+$->foo will not parse right due to precedences
-    $->foo + $->bar will not parse
-
 TODO
     custom invoker name with "use invoker '$this'"
 

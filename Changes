@@ -1,5 +1,8 @@
 Revision history for Perl extension invoker
 
+0.29_003  Sun Jan 16 02:11:31 CST 2011
+        - a saner implementation that works on more complicated statements.
+
 0.29_002  Sat Jan 15 23:42:13 CST 2011
         - Fix compiling on threaded perl
 
