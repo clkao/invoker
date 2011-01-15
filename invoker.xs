@@ -11,12 +11,12 @@
 
 #else
 
-#define op_append_elem(a,b,c) Perl_append_elem(a,b,c)
+#define op_append_elem(a,b,c) Perl_append_elem(aTHX_ a,b,c)
 
 #if PERL_REVISION == 5 && PERL_VERSION >= 12
 
 #else
-#define pad_findmy(a,b,c) Perl_pad_findmy(a)
+#define pad_findmy(a,b,c) Perl_pad_findmy(aTHX_ a)
 #endif
 #endif
 
