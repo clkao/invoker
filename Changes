@@ -1,4 +1,7 @@
 Revision history for Perl extension invoker
 
+0.29_002  Sat Jan 15 23:42:13 CST 2011
+        - Fix compiling on threaded perl
+
 0.29_001  Sat Jan 15 21:25:29 CST 2011
         - original version

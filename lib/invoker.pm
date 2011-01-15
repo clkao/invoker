@@ -6,7 +6,7 @@ use 5.010_001;
 use B::Hooks::OP::Check;
 use B::Hooks::EndOfScope;
 
-our $VERSION = "0.29_001";
+our $VERSION = "0.29_002";
 
 require XSLoader;
 XSLoader::load(__PACKAGE__, $VERSION);
