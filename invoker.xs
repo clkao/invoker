@@ -40,7 +40,18 @@ invoker_ck_entersub(pTHX_ OP *o, void *ud) {
 
 	    const PADOFFSET tmp = pad_findmy("$self", 5, 0);
             if (tmp == -1) {
-                croak("$self not found");
+                gv = gv_fetchpvn_flags("self", 4, GV_NOINIT, SVt_PV);
+                if (SvOK(gv) && SvTYPE(gv) == SVt_PVGV) {
+                    // "$self" was defined as a package variable -- use it
+                    cUNOPx(arg)->op_first = newGVOP(
+                        gvop->op_type,
+                        gvop->op_flags,
+                        gv
+                    );
+                }
+                else {
+                    croak("$self not found");
+                }
             }
             else {
                 OP * const self = newOP(OP_PADSV, 0);
