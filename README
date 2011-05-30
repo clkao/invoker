@@ -19,7 +19,7 @@ DESCRIPTION
     $self , inspired by Perl6's "$.method" invocation.
 
     The module does not inject the $self variable for you. you are
-    encouraged to use it in conjunction with self,
+    encouraged to use it in conjunction with self, selfvars,
     <Method::Signatures::Simple>, or other similar modules.
 
     The following syntax works:
@@ -43,7 +43,7 @@ TODO
     custom invoker name with "use invoker '$this'"
 
 AUTHOR
-    Chia-liang Kao <clkao@clkao.org>
+    Chia-liang Kao <clkao@clkao.org> Audrey Tang <audreyt@audreyt.org>
 
 LICENSE
     This library is free software; you can redistribute it and/or modify it
