@@ -1,5 +1,9 @@
 Revision history for Perl extension invoker
 
+0.30      Mon May 30 18:06:04 CST 2011
+        - make $self from package var (when used with selfvars) work as well.
+        - switch to devel::declare since B::Hooks::Parser is broken for 5.14.
+
 0.29_003  Sun Jan 16 02:11:31 CST 2011
         - a saner implementation that works on more complicated statements.
 
