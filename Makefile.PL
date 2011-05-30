@@ -13,7 +13,7 @@ configure_requires 'B::Hooks::OP::Check';
 
 requires 'B::Hooks::OP::Check';
 requires 'B::Hooks::EndOfScope';
-requires 'B::Hooks::Parser'      => '0.07';
+requires 'Devel::Declare' => '0.006004';
 requires 'B::OPCheck';
 
 my $pkg = ExtUtils::Depends->new('invoker', 'B::Hooks::OP::Check');
