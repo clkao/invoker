@@ -75,7 +75,7 @@ the invoker pragma enables the C<< $-> >> syntax for invoking methods
 on C< $self >, inspired by Perl6's C<< $.method >> invocation.
 
 The module does not inject the C< $self > variable for you.  you are
-encouraged to use it in conjunction with L<self>,
+encouraged to use it in conjunction with L<self>, L<selfvars>,
 <Method::Signatures::Simple>, or other similar modules.
 
 The following syntax works:
@@ -120,6 +120,7 @@ C<$self >.
 =head1 AUTHOR
 
 Chia-liang Kao E<lt>clkao@clkao.orgE<gt>
+Audrey Tang E<lt>audreyt@audreyt.orgE<gt>
 
 =head1 LICENSE
 
