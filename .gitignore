@@ -1,4 +1,5 @@
 META.yml
+MYMETA.json
 Makefile
 inc/
 pm_to_blib
