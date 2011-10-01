@@ -7,6 +7,13 @@
 
 #include "hook_op_check.h"
 
+#if PERL_REVISION == 5 && PERL_VERSION >= 16
+#define pad_findmy(a,b,c) Perl_pad_findmy_pvn(aTHX_ a, b, c)
+#else
+#if PERL_REVISION == 5 && PERL_VERSION >= 15 && PERL_SUBVERSION >= 1
+#define pad_findmy(a,b,c) Perl_pad_findmy_pvn(aTHX_ a, b, c)
+
+#else
 #if PERL_REVISION == 5 && PERL_VERSION >= 13
 
 #else
@@ -17,6 +24,8 @@
 
 #else
 #define pad_findmy(a,b,c) Perl_pad_findmy(aTHX_ a)
+#endif
+#endif
 #endif
 #endif
 
