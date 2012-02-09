@@ -71,7 +71,7 @@ invoker - implicit invoker, sort of
 
 =head1 DESCRIPTION
 
-the invoker pragma enables the C<< $-> >> syntax for invoking methods
+The invoker pragma enables the C<< $-> >> syntax for invoking methods
 on C< $self >, inspired by Perl6's C<< $.method >> invocation.
 
 The module does not inject the C< $self > variable for you.  you are
@@ -94,14 +94,13 @@ The following syntax works:
 
 =head1 CAVEATS
 
-WARNINGS WARNINGS WARNINGS
-
-This is alpha code.  Do not use in production.
+Regular hash access must still be written as C<< $self->{attr} >>
+instead of C<< $->{attr} >>.
 
 Internally, the module installs a parser hook to replace C<< $-> >>
 (C<$-> and the gt operator) with $--> (an invocation on the C< $- >
-perlvar.  It also injects an entersub hook to replace C< $- > with
-C<$self >.
+perlvar.  It also injects an C<entersub> hook to replace C< $- > with
+C<$self>.
 
 =head1 BUGS
 
