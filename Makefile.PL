@@ -6,7 +6,6 @@ name 'invoker';
 all_from 'lib/invoker.pm';
 readme_from 'lib/invoker.pm';
 build_requires 'Test::More' => 0.88;
-auto_include_deps;
 author_tests('xt');
 configure_requires 'ExtUtils::Depends';
 configure_requires 'B::Hooks::OP::Check';

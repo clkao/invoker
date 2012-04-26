@@ -1,5 +1,8 @@
 Revision history for Perl extension invoker
 
+0.32      Thu Apr 26 21:56:54 CST 2012
+        - remove alpha-code warnings.
+
 0.31      Sun Oct  2 01:06:56 CST 2011
         - fix compatibility with 5.15.1+
 
