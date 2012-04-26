@@ -15,7 +15,7 @@ SYNOPSIS
       # }
 
 DESCRIPTION
-    the invoker pragma enables the "$->" syntax for invoking methods on
+    The invoker pragma enables the "$->" syntax for invoking methods on
     $self , inspired by Perl6's "$.method" invocation.
 
     The module does not inject the $self variable for you. you are
@@ -30,13 +30,12 @@ DESCRIPTION
     $->$method_name( .. args ...)
 
 CAVEATS
-    WARNINGS WARNINGS WARNINGS
-
-    This is alpha code. Do not use in production.
+    Regular hash access must still be written as "$self->{attr}" instead of
+    "$->{attr}".
 
     Internally, the module installs a parser hook to replace "$->" ($- and
     the gt operator) with $--> (an invocation on the $- perlvar. It also
-    injects an entersub hook to replace $- with $self .
+    injects an "entersub" hook to replace $- with $self.
 
 BUGS
 TODO
