@@ -15,3 +15,6 @@
 \.o
 \.c
 \.bs
+\.swp
+^.gitignore$
+^invoker-*

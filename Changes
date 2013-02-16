@@ -1,5 +1,8 @@
 Revision history for Perl extension invoker
 
+0.33      Sat Feb 16 17:49:12 CST 2013
+        - upgrade Module::Install
+
 0.32      Thu Apr 26 21:56:54 CST 2012
         - remove alpha-code warnings.
 
