@@ -64,10 +64,10 @@ invoker - implicit invoker, sort of
     $->bar; # calls $self->bar;
   }
 
-  # use Method::Signatures::Simple
-  # method {
-  #  $->bar # ditto
-  # }
+  use methods-invoker;
+  method {
+    $->bar # ditto
+  }
 
 =head1 DESCRIPTION
 
@@ -127,6 +127,8 @@ This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
 =head1 SEE ALSO
+
+L<methods>
 
 =cut
 
