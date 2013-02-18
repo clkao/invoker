@@ -6,7 +6,7 @@ use 5.010_001;
 use B::Hooks::OP::Check;
 use B::Hooks::EndOfScope;
 
-our $VERSION = "0.33";
+our $VERSION = "0.34";
 
 use Devel::Declare;
 require XSLoader;

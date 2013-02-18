@@ -1,5 +1,8 @@
 Revision history for Perl extension invoker
 
+0.34      Mon Feb 18 10:34:46 CST 2013
+        - dist fixes
+
 0.33      Sat Feb 16 17:49:12 CST 2013
         - upgrade Module::Install
 

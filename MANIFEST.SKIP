@@ -17,4 +17,5 @@
 \.bs
 \.swp
 ^.gitignore$
-^invoker-*
+^invoker-.*
+^MYMETA.*

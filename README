@@ -9,10 +9,10 @@ SYNOPSIS
         $->bar; # calls $self->bar;
       }
 
-      # use Method::Signatures::Simple
-      # method {
-      #  $->bar # ditto
-      # }
+      use methods-invoker;
+      method {
+        $->bar # ditto
+      }
 
 DESCRIPTION
     The invoker pragma enables the "$->" syntax for invoking methods on
@@ -49,3 +49,5 @@ LICENSE
     under the same terms as Perl itself.
 
 SEE ALSO
+    methods
+
