@@ -36,9 +36,9 @@ typedef struct userdata_St {
 
 static OP *
 invoker_ck_entersub(pTHX_ OP *o, void *ud) {
-    OP *f = ((cUNOPo->op_first->op_sibling)
+    OP *f = (OpHAS_SIBLING(cUNOPo->op_first)
              ? cUNOPo : ((UNOP*)cUNOPo->op_first))->op_first; // pushmark
-    OP *arg = f->op_sibling; // the actual first argument
+    OP *arg = OpSIBLING(f); // the actual first argument
 
     if (arg->op_type == OP_RV2SV) {
         GV *gv;
@@ -65,8 +65,17 @@ invoker_ck_entersub(pTHX_ OP *o, void *ud) {
             else {
                 OP * const self = newOP(OP_PADSV, 0);
                 self->op_targ = tmp;
+
+#if PERL_REVISION == 5 && PERL_VERSION >= 26
+
+                f->op_sibparent = self;
+                self->op_sibparent = arg->op_sibparent;
+                self->op_moresib = 1;
+
+#else
                 f->op_sibling = self;
                 self->op_sibling = arg->op_sibling;
+#endif
                 op_free(arg);
             }
         }
